@@ -1,0 +1,26 @@
+/* Solution for Calculation Order Issue: Ensure parent width is defined before using calc() on child.  Methods include using explicit widths for the parent, or ensuring the parent's width is calculated before the child's. */
+
+/* Solution for Unit Incompatibility: Use consistent units within the calc() expression, avoiding mixing percentages and pixels directly. Consider using variables or pre-calculations to achieve the desired result using compatible units. */
+
+/*Example of corrected usage*/
+.parent {
+  width: 500px; /* Explicitly define parent width */
+}
+
+.child {
+  width: calc(100% - 20px);
+}
+
+/*Example using variables for better readability and maintainability*/
+:root {
+  --parent-width: 500px;
+  --child-margin: 20px;
+}
+
+.parent {
+  width: var(--parent-width);
+}
+
+.child {
+  width: calc(var(--parent-width) - var(--child-margin));
+}
